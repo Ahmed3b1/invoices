@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InvoiceAttachmentsController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\InvoicesDetailsController;
 use App\Http\Controllers\ProfileController;
@@ -20,6 +21,12 @@ Route::resource('/invoices', InvoicesController::class)->middleware('auth')->nam
 Route::resource('/invoices', InvoicesController::class)->middleware('auth')->name('post' ,'invoices');
 Route::resource('/sections', SectionsController::class)->middleware('auth')->name('get' ,'sections');
 Route::resource('/sections', SectionsController::class)->middleware('auth')->name('post' ,'sections');
+
+Route::get('/invoiceEdit/{invoice_id}', [InvoicesController::class, 'edit'])->middleware('auth')->name('invoiceEdit');
+
+Route::post('/invoiceUpdate', [InvoicesController::class, 'update'])->middleware('auth')->name('invoiceUpdate');
+
+Route::post('/InvoiceAttachments/store', [InvoiceAttachmentsController::class , 'store'])->middleware('auth')->name('InvoiceAttachments_store');
 
 Route::get('/section/{id}', [InvoicesController::class, 'getproducts'])->middleware('auth');
 

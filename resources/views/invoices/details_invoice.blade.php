@@ -202,13 +202,13 @@
                                         <div class="tab-pane" id="tab6">
                                             <!--المرفقات-->
                                             <div class="card card-statistics">
-                                                @can('اضافة مرفق')
-                                                    <div class="card-body">
+
+                                                <div class="card-body">
                                                         <p class="text-danger">* صيغة المرفق pdf, jpeg ,.jpg , png </p>
                                                         <h5 class="card-title">اضافة مرفقات</h5>
-                                                        <form method="post" action="{{ url('/InvoiceAttachments') }}"
+                                                        <form method="post" action="{{ route('InvoiceAttachments_store') }}"
                                                             enctype="multipart/form-data">
-                                                            {{ csrf_field() }}
+                                                            @csrf
                                                             <div class="custom-file">
                                                                 <input type="file" class="custom-file-input" id="customFile"
                                                                     name="file_name" required>
@@ -223,7 +223,6 @@
                                                                 name="uploadedFile">تاكيد</button>
                                                         </form>
                                                     </div>
-                                                @endcan
                                                 <br>
 
                                                 <div class="table-responsive mt-15">
