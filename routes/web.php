@@ -22,6 +22,8 @@ Route::resource('/invoices', InvoicesController::class)->middleware('auth')->nam
 Route::resource('/sections', SectionsController::class)->middleware('auth')->name('get' ,'sections');
 Route::resource('/sections', SectionsController::class)->middleware('auth')->name('post' ,'sections');
 
+Route::post('/invoiceDestroy', [InvoicesController::class, 'destroy'])->middleware('auth')->name('invoiceDestroy');
+
 Route::get('/invoiceEdit/{invoice_id}', [InvoicesController::class, 'edit'])->middleware('auth')->name('invoiceEdit');
 
 Route::post('/invoiceUpdate', [InvoicesController::class, 'update'])->middleware('auth')->name('invoiceUpdate');
