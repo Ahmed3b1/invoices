@@ -111,14 +111,12 @@
                                                                                 class="text-danger fas fa-trash-alt"></i>&nbsp;&nbsp;حذف
                                                                             الفاتورة</a>
 
-                                                                    @can('تغير حالة الدفع')
                                                                         <a class="dropdown-item"
-                                                                            href="{{ URL::route('Status_show', [$invoice->id]) }}"><i
+                                                                            href="{{ route('Status_show', $invoice->id) }}"><i
                                                                                 class=" text-success fas
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     fa-money-bill"></i>&nbsp;&nbsp;تغير
                                                                             حالة
                                                                             الدفع</a>
-                                                                    @endcan
 
                                                                     @can('ارشفة الفاتورة')
                                                                         <a class="dropdown-item" href="#" data-invoice_id="{{ $invoice->id }}"
