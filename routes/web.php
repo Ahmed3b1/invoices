@@ -3,6 +3,7 @@
 use App\Http\Controllers\InvoiceAttachmentsController;
 use App\Http\Controllers\InvoicesController;
 use App\Http\Controllers\InvoicesDetailsController;
+use App\Http\Controllers\InvoiceArchiveController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\SectionsController;
@@ -21,6 +22,16 @@ Route::resource('/invoices', InvoicesController::class)->middleware('auth')->nam
 Route::resource('/invoices', InvoicesController::class)->middleware('auth')->name('post' ,'invoices');
 Route::resource('/sections', SectionsController::class)->middleware('auth')->name('get' ,'sections');
 Route::resource('/sections', SectionsController::class)->middleware('auth')->name('post' ,'sections');
+
+Route::get('/invoices_unpaid', [InvoicesController::class , 'Invoice_unPaid'])->middleware('auth')->name('invoices_unpaid');
+Route::get('/invoices_paid', [InvoicesController::class , 'Invoice_Paid'])->middleware('auth')->name('invoices_paid');
+Route::get('/invoices_partial', [InvoicesController::class , 'Invoice_Partial'])->middleware('auth')->name('invoices_partial');
+
+Route::resource('/Archive_Invoices', InvoiceArchiveController::class)->middleware('auth')->name('get' ,'Archive_Invoices');
+
+Route::post('/Archive_Destroy', [InvoiceArchiveController::class , 'Destroy'])->middleware('auth')->name('Archive_Destroy');
+
+Route::post('/Archive_Update', [InvoiceArchiveController::class , 'Update'])->middleware('auth')->name('Archive_Update');
 
 Route::post('/invoiceDestroy', [InvoicesController::class, 'destroy'])->middleware('auth')->name('invoiceDestroy');
 
