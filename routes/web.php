@@ -27,6 +27,8 @@ Route::get('/invoices_unpaid', [InvoicesController::class , 'Invoice_unPaid'])->
 Route::get('/invoices_paid', [InvoicesController::class , 'Invoice_Paid'])->middleware('auth')->name('invoices_paid');
 Route::get('/invoices_partial', [InvoicesController::class , 'Invoice_Partial'])->middleware('auth')->name('invoices_partial');
 
+Route::get('/Print_invoice/{invoice_id}', [InvoicesController::class , 'Print_invoice'])->middleware('auth')->name('Print_invoice');
+
 Route::resource('/Archive_Invoices', InvoiceArchiveController::class)->middleware('auth')->name('get' ,'Archive_Invoices');
 
 Route::post('/Archive_Destroy', [InvoiceArchiveController::class , 'Destroy'])->middleware('auth')->name('Archive_Destroy');
