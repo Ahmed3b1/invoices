@@ -57,6 +57,8 @@ Route::get('/view_file/{invoice_number}/{file_name}', [InvoicesDetailsController
 
 Route::post('/delete_file', [InvoicesDetailsController::class, 'destroy'])->middleware('auth')->name('delete_file');
 
+Route::get('/invoice_export', [InvoicesController::class, 'export'])->middleware('auth')->name('invoice_export');
+
 Route::resource('/products', ProductsController::class)->middleware('auth')->name('get' ,'products');
 
 Route::middleware('auth')->group(function () {
